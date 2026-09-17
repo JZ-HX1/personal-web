@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>叶易初 | 个人展示平台</title>
+  <meta name="description" content="叶易初 - 上海杉达学院计算机科学与技术专业个人展示平台" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">叶易初<span class="logo-dot">.</span></a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home" class="nav-link active">首页</a></li>
+        <li><a href="#about" class="nav-link">关于我</a></li>
+        <li><a href="#skills" class="nav-link">技能</a></li>
+        <li><a href="#certificates" class="nav-link">证书</a></li>
+        <li><a href="#projects" class="nav-link">项目展示</a></li>
+        <li><a href="#contact" class="nav-link">联系我</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 首屏 -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <p class="hero-hello">你好，我是</p>
+        <h1 class="hero-name">叶易初</h1>
+        <h2 class="hero-title">计算机科学与技术专业学生</h2>
+        <p class="hero-desc">
+          上海杉达学院 · 热爱编程与技术探索<br />
+          用代码构建想法，用项目记录成长
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary">查看我的项目</a>
+          <a href="#contact" class="btn btn-outline">联系我</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-ring">
+          <img src="assets/photo.jpg" alt="叶易初的照片" />
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-down" aria-label="向下滚动">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+  </section>
+
+  <!-- 关于我 -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">关于我</h2>
+      <p class="section-subtitle">ABOUT ME</p>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">🎓</div>
+          <h3>教育背景</h3>
+          <p>上海杉达学院<br />计算机科学与技术专业</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">💻</div>
+          <h3>专业方向</h3>
+          <p>程序设计 & 软件开发<br />持续学习新技术</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🏆</div>
+          <h3>认证荣誉</h3>
+          <p>全国计算机等级考试二级<br />Python语言程序设计（合格）</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🚀</div>
+          <h3>个人态度</h3>
+          <p>热爱动手实践<br />在项目中不断精进</p>
+        </div>
+      </div>
+      <div class="about-text">
+        <p>
+          我是叶易初，一名来自上海杉达学院计算机科学与技术专业的学生。
+          我对编程充满热情，尤其擅长 Python 程序设计，并通过了全国计算机等级考试二级（Python）认证。
+          我相信实践出真知，喜欢通过做项目来检验和提升自己的技术能力。
+          这个网站收录了我学习和实践过程中的所有项目，欢迎浏览交流。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技能 -->
+  <section class="section section-alt" id="skills">
+    <div class="container">
+      <h2 class="section-title">专业技能</h2>
+      <p class="section-subtitle">MY SKILLS</p>
+      <div class="skills-grid" id="skills-grid">
+        <!-- 由 js/data.js 动态渲染 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 证书 -->
+  <section class="section" id="certificates">
+    <div class="container">
+      <h2 class="section-title">我的证书</h2>
+      <p class="section-subtitle">CERTIFICATES</p>
+      <div class="cert-grid">
+        <div class="cert-card" id="cert-card">
+          <div class="cert-badge">NCRE 二级</div>
+          <h3>全国计算机等级考试二级</h3>
+          <p class="cert-subject">Python 语言程序设计</p>
+          <p class="cert-meta">考试时间：2026 年 3 月 · 成绩：合格</p>
+          <p class="cert-org">发证单位：教育部教育考试院</p>
+          <button class="btn btn-outline cert-view-btn" id="cert-view-btn">查看证书</button>
+        </div>
+        <!-- 以后拿到新证书，可以照着上面的卡片继续添加 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目展示 -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <h2 class="section-title">项目展示</h2>
+      <p class="section-subtitle">MY PROJECTS</p>
+      <div class="project-filters" id="project-filters">
+        <!-- 由 js/main.js 动态生成筛选按钮 -->
+      </div>
+      <div class="projects-grid" id="projects-grid">
+        <!-- 由 js/data.js 动态渲染 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我 -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title">联系我</h2>
+      <p class="section-subtitle">CONTACT</p>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:3582683805@qq.com">
+          <div class="contact-icon">📧</div>
+          <h3>邮箱</h3>
+          <p>3582683805@qq.com</p>
+        </a>
+        <div class="contact-card">
+          <div class="contact-icon">🏫</div>
+          <h3>学校</h3>
+          <p>上海杉达学院</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 叶易初 · 上海杉达学院 计算机科学与技术</p>
+  </footer>
+
+  <!-- 证书查看弹窗 -->
+  <div class="modal" id="cert-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="关闭">×</button>
+      <img src="assets/certificate.jpg" alt="全国计算机等级考试二级证书" />
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

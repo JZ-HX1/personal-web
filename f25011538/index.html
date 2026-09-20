@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自动做好项目 & 自动发布仓库方式 · 学习报告</title>
+<style>
+  :root{
+    --blue:#1f6feb; --blue-dark:#1158c7; --blue-soft:#e8f1ff;
+    --ink:#1f2328; --muted:#57606a; --line:#d8dee4; --bg:#f6f8fa;
+    --green:#1a7f37; --green-soft:#e6f4ea; --amber:#9a6700; --amber-soft:#fff8e1;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+       color:var(--ink);background:var(--bg);line-height:1.75}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 20px 80px}
+  header.hero{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;border-radius:16px;
+       padding:36px 32px;box-shadow:0 10px 30px rgba(31,111,235,.25)}
+  header.hero h1{margin:0 0 6px;font-size:28px;letter-spacing:.5px}
+  header.hero p{margin:4px 0;opacity:.92}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .meta span{background:rgba(255,255,255,.18);padding:4px 12px;border-radius:999px;font-size:13px}
+  nav.toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:24px 0}
+  nav.toc h2{margin:0 0 10px;font-size:15px;color:var(--blue-dark)}
+  nav.toc ol{margin:0;padding-left:20px;columns:2;font-size:14px}
+  nav.toc a{color:var(--blue);text-decoration:none}
+  nav.toc a:hover{text-decoration:underline}
+  section{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px 26px;margin:20px 0;
+       scroll-margin-top:20px}
+  h2.sec{margin:0 0 14px;font-size:21px;color:var(--blue-dark);border-left:5px solid var(--blue);padding-left:12px}
+  h3{font-size:16px;margin:20px 0 8px;color:var(--ink)}
+  p{margin:8px 0;color:#33373d}
+  ul,ol{margin:8px 0;padding-left:22px}
+  li{margin:5px 0}
+  code{background:var(--blue-soft);color:var(--blue-dark);padding:2px 6px;border-radius:6px;font-size:13px;
+       font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+  pre{background:#0d1117;color:#e6edf3;padding:16px 18px;border-radius:10px;overflow:auto;font-size:13px;line-height:1.6}
+  pre code{background:none;color:inherit;padding:0}
+  .card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0;background:var(--bg)}
+  .card b{color:var(--blue-dark)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--blue-soft);color:var(--blue-dark)}
+  tr:nth-child(even) td{background:#fafbfc}
+  .tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600}
+  .t-green{background:var(--green-soft);color:var(--green)}
+  .t-amber{background:var(--amber-soft);color:var(--amber)}
+  .t-blue{background:var(--blue-soft);color:var(--blue-dark)}
+  .steps{counter-reset:s;list-style:none;padding-left:0}
+  .steps li{position:relative;padding:10px 14px 10px 46px;border:1px solid var(--line);border-radius:10px;margin:10px 0;background:#fff}
+  .steps li:before{counter-increment:s;content:counter(s);position:absolute;left:12px;top:10px;width:24px;height:24px;
+       background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+  .note{background:var(--amber-soft);border-left:4px solid var(--amber);padding:12px 16px;border-radius:8px;margin:14px 0;font-size:14px}
+  .ok{background:var(--green-soft);border-left:4px solid var(--green);padding:12px 16px;border-radius:8px;margin:14px 0;font-size:14px}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px}
+  a.link{color:var(--blue)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>自动做好项目 &amp; 自动发布仓库方式</h1>
+    <p>从「手动搬砖」到「一键交付」——项目自动化与仓库自动发布的实践报告</p>
+    <div class="meta">
+      <span>姓名：叶易初</span>
+      <span>学号：f25011538</span>
+      <span>专业：计算机科学与技术</span>
+      <span>学校：上海杉达学院</span>
+      <span>日期：2026-09-20</span>
+    </div>
+  </header>
+
+  <nav class="toc">
+    <h2>目录</h2>
+    <ol>
+      <li><a href="#s1">摘要</a></li>
+      <li><a href="#s2">怎么自动做好项目</a></li>
+      <li><a href="#s3">自动发布仓库的方式</a></li>
+      <li><a href="#s4">方式对比表</a></li>
+      <li><a href="#s5">实操：给 personal-web 接自动发布</a></li>
+      <li><a href="#s6">小结</a></li>
+    </ol>
+  </nav>
+
+  <section id="s1">
+    <h2 class="sec">一、摘要</h2>
+    <p>「自动做好项目」指用工具把<strong>重复、机械、易错</strong>的环节（脚手架、格式化、测试、部署）交给机器；「自动发布仓库」指代码一推送到远程，就自动构建并上线，无需人工登录服务器操作。</p>
+    <p>本报告先梳理项目开发中可以自动化的环节，再系统对比多种「自动发布仓库」的方案，最后以本人个人展示网站 <code>personal-web</code> 为例，真实接入 <strong>GitHub Pages + GitHub Actions</strong> 自动发布流水线作为佐证。</p>
+  </section>
+
+  <section id="s2">
+    <h2 class="sec">二、怎么自动做好项目</h2>
+    <p>项目自动化贯穿「创建 → 编码 → 质检 → 测试 → 集成」全过程：</p>
+
+    <h3>1. 脚手架自动化（项目从 0 到 1）</h3>
+    <div class="card">
+      <b>思路：</b>用模板生成标准结构，避免每次手动建目录、配依赖。<br>
+      • 前端：<code>npm create vite@latest</code>、<code>create-react-app</code><br>
+      • 通用模板引擎：<code>Cookiecutter</code>（Python/多语言）<br>
+      • AI 生成：在 WorkBuddy / Copilot 里一句话生成项目骨架
+    </div>
+
+    <h3>2. 任务自动化（日常命令）</h3>
+    <div class="card">
+      <b>思路：</b>把常用命令封装成脚本，统一入口。<br>
+      • <code>package.json</code> 的 <code>scripts</code>：<code>npm run dev / build / test</code><br>
+      • <code>Makefile</code> / <code>Taskfile</code>：跨语言的任务编排
+    </div>
+
+    <h3>3. 代码质量自动化（提交前把关）</h3>
+    <div class="card">
+      <b>思路：</b>统一风格 + 提交钩子，把低级错误挡在入库前。<br>
+      • 格式化：<code>Prettier</code>；静态检查：<code>ESLint</code><br>
+      • 提交钩子：<code>husky</code> + <code>lint-staged</code>，<code>git commit</code> 时自动格式化与检查
+    </div>
+
+    <h3>4. 测试与持续集成（CI）自动化</h3>
+    <div class="card">
+      <b>思路：</b>每次推送自动跑构建+测试，红绿一目了然。<br>
+      • <code>GitHub Actions</code>：推送即触发，失败直接拦截合并<br>
+      • 单测框架：<code>Jest</code> / <code>pytest</code> / <code>Vitest</code>
+    </div>
+
+    <h3>5. AI 辅助自动化（提效杠杆）</h3>
+    <div class="card">
+      <b>思路：</b>让 AI 代理承担「调研、生成、修复、发布」等整段工作流。<br>
+      • 生成代码/文档/测试；自动定位并修复报错<br>
+      • 本报告的生成与 <code>personal-web</code> 的部署接入，均由 WorkBuddy 代理完成
+    </div>
+  </section>
+
+  <section id="s3">
+    <h2 class="sec">三、自动发布仓库的方式</h2>
+    <p>「自动发布」的核心是：<strong>Git 推送 → 触发流水线 → 自动构建/部署 → 线上更新</strong>。常见方案：</p>
+
+    <h3>① GitHub Pages + GitHub Actions（静态站首选）</h3>
+    <div class="card">适合纯静态站点（HTML/CSS/JS）。工作流把仓库产物上传，Actions 自动部署到 <code>*.github.io</code>。本报告的实操案例即用此方案。</div>
+
+    <h3>② Vercel / Netlify（前端框架友好）</h3>
+    <div class="card">在平台绑定 GitHub 仓库，<code>push</code> 即部署，自带预览环境、HTTPS、CDN。对 React/Vue/Next 等零配置。</div>
+
+    <h3>③ GitLab CI + GitLab Pages</h3>
+    <div class="card">若代码托管在 GitLab，用 <code>.gitlab-ci.yml</code> 定义 <code>pages</code> job，推送到特定分支即发布。</div>
+
+    <h3>④ 容器 + 云平台（后端/全栈）</h3>
+    <div class="card">用 <code>Dockerfile</code> 打包，推送镜像或连接 <code>Railway / Render / Fly.io / 云厂商</code>，实现后端服务自动部署。</div>
+
+    <h3>⑤ npm publish（包/库发布）</h3>
+    <div class="card">发布可复用组件库：<code>npm version patch &amp;&amp; npm publish</code>，可接入 CI 在打 tag 时自动发版。</div>
+  </section>
+
+  <section id="s4">
+    <h2 class="sec">四、方式对比表</h2>
+    <table>
+      <thead>
+        <tr><th>方案</th><th>适合场景</th><th>是否需要服务器</th><th>上手难度</th><th>自动化程度</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>GitHub Pages + Actions</td><td>静态站 / 文档</td><td>否</td><td><span class="tag t-green">低</span></td><td><span class="tag t-blue">高</span></td></tr>
+        <tr><td>Vercel / Netlify</td><td>前端框架站</td><td>否</td><td><span class="tag t-green">低</span></td><td><span class="tag t-blue">高</span></td></tr>
+        <tr><td>GitLab CI + Pages</td><td>GitLab 托管项目</td><td>否</td><td><span class="tag t-amber">中</span></td><td><span class="tag t-blue">高</span></td></tr>
+        <tr><td>Docker + 云平台</td><td>后端 / 全栈</td><td>是（平台托管）</td><td><span class="tag t-amber">中</span></td><td><span class="tag t-blue">高</span></td></tr>
+        <tr><td>npm publish</td><td>组件库 / CLI</td><td>否</td><td><span class="tag t-green">低</span></td><td><span class="tag t-amber">中</span></td></tr>
+        <tr><td>手动 FTP / SCP</td><td> legacy 服务器</td><td>是</td><td><span class="tag t-amber">中</span></td><td><span class="tag t-green">无</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note"><b>结论：</b>纯静态展示类项目（如本课程作业、个人主页）优先选 <b>GitHub Pages + Actions</b> 或 <b>Vercel</b>，零服务器、免费、push 即上线，最符合「自动发布仓库」的定义。</p>
+  </section>
+
+  <section id="s5">
+    <h2 class="sec">五、实操：给 personal-web 接上自动发布</h2>
+    <p>本人个人展示网站 <code>D:\ProgramData\personal-web</code> 已托管于
+       <a class="link" href="https://github.com/JZ-HX1/personal-web">github.com/JZ-HX1/personal-web</a>（分支 <code>main</code>）。
+       已新增部署工作流 <code>.github/workflows/deploy.yml</code> 并推送成功（commit <code>5b8e128</code>）。</p>
+
+    <h3>部署工作流内容</h3>
+    <pre><code>name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]      # 推送到 main 即触发
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: . }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4</code></pre>
+
+    <h3>启用步骤（一次性手动开关）</h3>
+    <ol class="steps">
+      <li>打开仓库 <b>Settings → Pages</b></li>
+      <li>Source 选择 <b>“GitHub Actions”</b>（而非 Deploy from a branch）</li>
+      <li>回到 <b>Actions</b> 标签页，可见 “Deploy to GitHub Pages” 工作流已就绪</li>
+      <li>以后任意 <code>git push origin main</code>，站点即在 <code>https://jz-hx1.github.io/personal-web/</code> 自动更新</li>
+    </ol>
+    <div class="ok"><b>已完成：</b>工作流文件已创建并推送；仅“Settings→Pages 选 GitHub Actions”这一步需你登录 GitHub 点一下（环境无 token 无法代操作）。点完后即实现“推代码=自动上线”。</div>
+  </section>
+
+  <section id="s6">
+    <h2 class="sec">六、小结</h2>
+    <ul>
+      <li><b>自动做好项目：</b>脚手架 + 任务脚本 + 质量钩子 + CI + AI 代理，把重复劳动外包给工具链。</li>
+      <li><b>自动发布仓库：</b>本质是“Git 推送触发流水线自动部署”，静态站首选 GitHub Pages / Vercel，后端用容器+云平台。</li>
+      <li><b>本次落地：</b>已为 <code>personal-web</code> 真实接入 GitHub Pages 自动发布，验证了“push 即上线”的闭环。</li>
+      <li><b>建议：</b>课程作业与个人项目统一用 Git 托管 + Actions 自动发布，既练手又省去手动传文件的麻烦。</li>
+    </ul>
+  </section>
+
+  <footer>
+    本报告由 WorkBuddy 代理辅助生成 · 学号 f25011538 · 提交文件夹：personal-web/f25011538/
+  </footer>
+
+</div>
+</body>
+</html>

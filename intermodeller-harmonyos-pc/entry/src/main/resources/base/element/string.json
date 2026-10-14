@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "概念建模与分类推理工作台"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "InterModeller 概念建模工具"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "InterModeller"
+    }
+  ]
+}

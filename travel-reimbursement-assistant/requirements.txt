@@ -1,0 +1,2 @@
+# Runtime uses only the Python standard library; no third-party packages needed.
+# Optional editable installation uses setuptools as declared in pyproject.toml.

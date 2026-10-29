@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "travel-reimbursement-assistant"
+version = "0.1.0"
+description = "Offline teaching MVP for travel claim preflight and event replay"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = []
+
+[project.scripts]
+travel-assistant = "my_tool.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

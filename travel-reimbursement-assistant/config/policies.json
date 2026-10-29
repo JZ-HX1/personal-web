@@ -1,0 +1,11 @@
+[
+  {
+    "policy_id": "DEMO-TRAVEL",
+    "version": "2026-demo-1",
+    "effective_from": "2026-01-01",
+    "effective_to": "2026-12-31",
+    "project_codes": ["P-DEMO-01", "P-DEMO-02"],
+    "clause": "教学规则第1条：提交票据和出差申请，分摊总额应与单据金额一致。",
+    "confirmed": true
+  }
+]

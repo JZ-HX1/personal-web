@@ -8,9 +8,11 @@ from pathlib import Path
 from .core.checks import check_claim
 from .core.ledger import EventLedger
 from .utils.files import load_json
+from .utils.console import configure_utf8_output
 
 
 def main(argv=None):
+    configure_utf8_output()
     parser = argparse.ArgumentParser(description="差旅报销教学原型：预检和事件回放")
     sub = parser.add_subparsers(dest="command", required=True)
     check = sub.add_parser("check", help="预检JSON单据，不执行审批")

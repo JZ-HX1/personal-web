@@ -10,9 +10,11 @@ sys.path.insert(0, str(ROOT / "src"))
 from my_tool.core.checks import check_claim
 from my_tool.core.ledger import EventLedger
 from my_tool.utils.files import load_json
+from my_tool.utils.console import configure_utf8_output
 
 
 def main():
+    configure_utf8_output()
     claim = load_json(ROOT / "data/claim.json")
     policies = load_json(ROOT / "config/policies.json")
     bad = copy.deepcopy(claim)

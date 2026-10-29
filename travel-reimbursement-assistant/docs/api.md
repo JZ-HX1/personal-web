@@ -13,6 +13,8 @@ python -m my_tool.main --help
 
 输入文件使用 UTF-8。单据与制度为 JSON，事件为 CSV；`data/claim.json`、`config/policies.json` 和 `data/events.csv` 是本版本可运行输入示例。命令中的相对路径以当前工作目录为基准。
 
+命令行帮助、JSON 结果和错误信息均以 UTF-8 输出；通过管道读取输出时也应使用 UTF-8 解码。演示脚本采用相同约定。
+
 ## 检查单据
 
 ```bash

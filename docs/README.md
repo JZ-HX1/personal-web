@@ -2,7 +2,8 @@
 
 - [差旅报销行业分析报告](../travel-reimbursement-assistant/docs/industry-report.docx)
 - [项目说明与运行方法](../travel-reimbursement-assistant/README.md)
-- [设计方案与现状及改进流程图](../travel-reimbursement-assistant/docs/design.md)
+- [设计方案：无 AI 现状与增加 AI 后系统流程图](../travel-reimbursement-assistant/docs/design.md)
+- [基础费＋效果浮动的 AI 试点示例报价](../travel-reimbursement-assistant/docs/quotation.md)
 - [CLI接口说明](../travel-reimbursement-assistant/docs/api.md)
 - [GitHub方案与行业资料引用](../travel-reimbursement-assistant/docs/references.md)
 

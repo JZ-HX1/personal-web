@@ -84,7 +84,8 @@ travel-reimbursement-assistant/
 ## 文档与选型依据
 
 - [行业分析报告](docs/industry-report.docx)：行业背景、开源候选方案和完整方案设想；不代表所有设想都已由离线原型实现。
-- [设计方案与流程图](docs/design.md)：需求映射、现状与改进流程、MVP边界。
+- [设计方案与两张流程图](docs/design.md)：无 AI 的现状业务流程、增加 AI 后的拟议系统流程；提供 PNG、SVG 和 Mermaid 源文件。
+- [AI 试点示例报价](docs/quotation.md)：基础费＋效果浮动、交付验收与10万元预算上限。
 - [CLI 接口说明](docs/api.md)：命令、输入输出和持久化行为。
 - [参考资料](docs/references.md)：Frappe、Odoo、OCA 与官方行业资料。
 - [贡献指南](CONTRIBUTING.md)和[变更记录](CHANGELOG.md)。

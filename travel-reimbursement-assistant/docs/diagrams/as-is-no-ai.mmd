@@ -1,0 +1,21 @@
+flowchart TD
+    A[员工收集发票与出差申请] --> B[人工填写报销单、项目编码及分摊说明]
+    B --> C[在 ERP 提交单据并关联 OA 申请]
+    C --> D[财务人工初审：查票据、项目余额与制度]
+    D --> E{材料和制度依据齐备？}
+    E -- 缺件或填报问题 --> X[退回员工补件、修正或补充说明]
+    X --> B
+    E -- 制度冲突 --> Y[制度与审计负责人裁定适用版本]
+    Y -- 记录裁定依据 --> D
+    E -- 是 --> F[项目负责人确认项目及分摊依据]
+    F -- 确认有问题 --> X
+    F -- 确认通过 --> G[财务人工复核并记录审核结论]
+    G --> H{复核通过？}
+    H -- 否 --> X
+    H -- 是 --> I[出纳接收清单并核对复核记录]
+    I --> J[按每周二、四批次办理付款]
+    J --> K[归档单据并更新业务状态]
+    classDef human fill:#EAF2FF,stroke:#3967A8,color:#152D4F
+    classDef decision fill:#FFF3DE,stroke:#B47722,color:#543B16
+    class A,B,C,D,F,G,I,J,K human
+    class E,H,X,Y decision

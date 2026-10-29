@@ -1,0 +1,6 @@
+event_id,claim_id,event_type,event_time,source,source_version
+ev-04,DEMO-001,review_approved,2026-10-22T09:00:00+08:00,ERP-DEMO,v1
+ev-01,DEMO-001,submitted,2026-10-20T09:00:00+08:00,ERP-DEMO,v1
+ev-02,DEMO-001,initial_approved,2026-10-21T09:00:00+08:00,ERP-DEMO,v1
+ev-03,DEMO-001,project_confirmed,2026-10-21T14:00:00+08:00,OA-DEMO,v1
+ev-05,DEMO-001,paid,2026-10-23T09:00:00+08:00,ERP-DEMO,v1

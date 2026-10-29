@@ -1,0 +1,10 @@
+{
+  "id": "DEMO-001",
+  "employee_id": "EMP-DEMO-01",
+  "travel_date": "2026-10-20",
+  "amount": "100.00",
+  "project_codes": ["P-DEMO-01"],
+  "attachments": ["invoice", "travel_approval"],
+  "allocations": [{"project_code": "P-DEMO-01", "amount": "100.00"}],
+  "policy_id": "DEMO-TRAVEL"
+}

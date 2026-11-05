@@ -1,10 +1,9 @@
-# 课程项目文档
+# 独立项目文档入口
 
-- [差旅报销行业分析报告](../travel-reimbursement-assistant/docs/industry-report.docx)
-- [项目说明与运行方法](../travel-reimbursement-assistant/README.md)
-- [设计方案：无 AI 现状与增加 AI 后系统流程图](../travel-reimbursement-assistant/docs/design.md)
-- [基础费＋效果浮动的 AI 试点示例报价](../travel-reimbursement-assistant/docs/quotation.md)
-- [CLI接口说明](../travel-reimbursement-assistant/docs/api.md)
-- [GitHub方案与行业资料引用](../travel-reimbursement-assistant/docs/references.md)
+应用源码与课程项目资料已迁往独立仓库，本页保留导航入口：
 
-报告中的访谈与指标属于合成教学场景。可运行原型使用独立构造的示例数据，尚未接入真实财务系统。
+- [鸿蒙 PC 建模应用：运行与测试说明](https://github.com/JZ-HX1/intermodeller-harmonyos-pc#readme)
+- [差旅报销工具：运行与测试说明](https://github.com/JZ-HX1/travel-reimbursement-assistant#readme)
+- [差旅项目完整文档索引](https://github.com/JZ-HX1/travel-reimbursement-assistant/blob/main/docs/README.md)
+
+个人网站页面与静态资源仍在 `personal-web` 中维护。
